@@ -177,7 +177,7 @@ $h4-font-size: emCalc(16px);
 
 //// Lists
 
-// $list-style-position: outside;
+$list-style-position: inside;
 // $list-side-margin: emCalc(18px);
 // $definition-list-header-weight: bold;
 // $definition-list-header-margin-bottom: .3em;
@@ -803,7 +803,7 @@ $h4-font-size: emCalc(16px);
 
 //// Background and border styles
 
-$panel-bg: white;
+$panel-bg: black;
 // $panel-border-style: solid;
 $panel-border-size: 0;
 
@@ -819,8 +819,8 @@ $panel-border-size: 0;
 
 //// Font colors
 
-$panel-font-color: black;
-$panel-font-color-alt: black;
+$panel-font-color: #666;
+$panel-font-color-alt: #666;
 
 //
 // Pricing Table Variables

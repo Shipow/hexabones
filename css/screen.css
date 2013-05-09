@@ -1489,7 +1489,7 @@ dl {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 1.25em;
-  list-style-position: outside;
+  list-style-position: inside;
   font-family: inherit; }
 
 /* Unordered Lists */
@@ -4246,13 +4246,13 @@ kbd {
 .panel {
   border-style: solid;
   border-width: 0;
-  border-color: #e6e6e6;
+  border-color: black;
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: white; }
-  /* line 43, ../scss/foundation/components/_panels.scss */
+  background: black; }
+  /* line 44, ../scss/foundation/components/_panels.scss */
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
-    color: black; }
+    color: #666666; }
   /* line 47, ../scss/foundation/components/_panels.scss */
   .panel > :first-child {
     margin-top: 0; }
@@ -4278,7 +4278,7 @@ kbd {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
     /* line 44, ../scss/foundation/components/_panels.scss */
     .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
-      color: black; }
+      color: #666666; }
     /* line 47, ../scss/foundation/components/_panels.scss */
     .panel.callout > :first-child {
       margin-top: 0; }
@@ -4912,18 +4912,52 @@ a.th {
     max-width: 800px; }
 
 /* line 13, ../scss/screen.sass */
+body {
+  position: relative; }
+
+/* line 16, ../scss/screen.sass */
 #home-intro {
   background-color: #2d2b2c;
-  border-bottom: solid 6px #060606;
+  border-bottom: solid 6px #0d0d0d;
   margin-bottom: 20px; }
-  /* line 17, ../scss/screen.sass */
+  /* line 20, ../scss/screen.sass */
   #home-intro h1 {
-    color: #181718;
-    text-shadow: #3a3739 1px 1px 0;
+    color: #0d0d0d;
+    text-shadow: #404040 1px 1px 0;
     text-transform: uppercase; }
 
-/* line 22, ../scss/screen.sass */
+/* line 25, ../scss/screen.sass */
 h2 {
-  color: #e6048c;
+  color: #f20084;
   font: 300 1em/1.2em "Ubuntu", sans-serif;
   margin-bottom: 1.2em; }
+
+/* line 30, ../scss/screen.sass */
+h3 {
+  text-transform: uppercase;
+  font: 300 1.8em/1.2em "Ubuntu", sans-serif; }
+
+/* line 34, ../scss/screen.sass */
+footer {
+  padding-top: 20px;
+  background-color: white; }
+
+/* line 38, ../scss/screen.sass */
+a#forkme_banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 138px;
+  height: 138px;
+  display: block;
+  background: transparent url(../img/fork-sprite.png) 0 0 no-repeat;
+  text-indent: -9000px;
+  z-index: 3; }
+  /* line 48, ../scss/screen.sass */
+  a#forkme_banner:hover {
+    background: transparent url(../img/fork-sprite.png) 0 -138px no-repeat; }
+
+/* line 51, ../scss/screen.sass */
+.leftborder {
+  border-left: 4px solid #333333;
+  padding-left: 6px; }
