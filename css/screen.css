@@ -4245,7 +4245,7 @@ kbd {
 /* line 62, ../scss/foundation/components/_panels.scss */
 .panel {
   border-style: solid;
-  border-width: 3px;
+  border-width: 0;
   border-color: #131212;
   margin-bottom: 1.25em;
   padding: 1.25em;
@@ -4269,7 +4269,7 @@ kbd {
   /* line 64, ../scss/foundation/components/_panels.scss */
   .panel.callout {
     border-style: solid;
-    border-width: 3px;
+    border-width: 0;
     border-color: #2284a1;
     margin-bottom: 1.25em;
     padding: 1.25em;
@@ -4939,10 +4939,10 @@ h3 {
 
 /* line 34, ../scss/screen.sass */
 footer {
-  padding-top: 20px;
   background-color: white;
   border-bottom: solid 6px #f20084;
-  margin-bottom: 2em; }
+  margin: 2.2em 0 1em 0;
+  padding: 1em 0 0 0; }
 
 /* line 40, ../scss/screen.sass */
 a#forkme_banner {
