@@ -1,0 +1,25 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass"
+@import "foundation"
+
+
+$hb-pink: #E6048C
+$hb-intro: #2D2B2C
+
+#home-intro
+  background-color: $hb-intro
+  border-bottom: solid 6px #060606
+  margin-bottom: 20px
+  h1
+    color: darken(#2D2B2C,8%)
+    +text-shadow(lighten(#2D2B2C,5%) 1px 1px 0)
+    text-transform: uppercase
+
+h2
+  color: $hb-pink
+  font: 300 1em/1.2em 'Ubuntu', sans-serif
+  margin-bottom: 1.2em
