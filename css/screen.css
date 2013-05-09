@@ -4245,14 +4245,14 @@ kbd {
 /* line 62, ../scss/foundation/components/_panels.scss */
 .panel {
   border-style: solid;
-  border-width: 0;
-  border-color: black;
+  border-width: 3px;
+  border-color: #131212;
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: black; }
+  background: #2d2b2c; }
   /* line 44, ../scss/foundation/components/_panels.scss */
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
-    color: #666666; }
+    color: #737373; }
   /* line 47, ../scss/foundation/components/_panels.scss */
   .panel > :first-child {
     margin-top: 0; }
@@ -4269,7 +4269,7 @@ kbd {
   /* line 64, ../scss/foundation/components/_panels.scss */
   .panel.callout {
     border-style: solid;
-    border-width: 0;
+    border-width: 3px;
     border-color: #2284a1;
     margin-bottom: 1.25em;
     padding: 1.25em;
@@ -4278,7 +4278,7 @@ kbd {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
     /* line 44, ../scss/foundation/components/_panels.scss */
     .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
-      color: #666666; }
+      color: #737373; }
     /* line 47, ../scss/foundation/components/_panels.scss */
     .panel.callout > :first-child {
       margin-top: 0; }
@@ -4940,9 +4940,11 @@ h3 {
 /* line 34, ../scss/screen.sass */
 footer {
   padding-top: 20px;
-  background-color: white; }
+  background-color: white;
+  border-bottom: solid 6px #f20084;
+  margin-bottom: 2em; }
 
-/* line 38, ../scss/screen.sass */
+/* line 40, ../scss/screen.sass */
 a#forkme_banner {
   position: absolute;
   top: 0;
@@ -4953,11 +4955,11 @@ a#forkme_banner {
   background: transparent url(../img/fork-sprite.png) 0 0 no-repeat;
   text-indent: -9000px;
   z-index: 3; }
-  /* line 48, ../scss/screen.sass */
+  /* line 50, ../scss/screen.sass */
   a#forkme_banner:hover {
     background: transparent url(../img/fork-sprite.png) 0 -138px no-repeat; }
 
-/* line 51, ../scss/screen.sass */
+/* line 53, ../scss/screen.sass */
 .leftborder {
   border-left: 4px solid #333333;
   padding-left: 6px; }

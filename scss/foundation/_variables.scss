@@ -803,14 +803,14 @@ $list-style-position: inside;
 
 //// Background and border styles
 
-$panel-bg: black;
-// $panel-border-style: solid;
-$panel-border-size: 0;
+$panel-bg: #2D2B2C;
+$panel-border-style: solid;
+$panel-border-size: 3px;
 
 //// Control how much we darken things on hover
 
 // $panel-function-factor: 10%;
-// $panel-border-color: darken($panel-bg, $panel-function-factor);
+// $panel-border-color: #F20084;
 
 //// Inner padding and bottom margin
 
@@ -819,8 +819,8 @@ $panel-border-size: 0;
 
 //// Font colors
 
-$panel-font-color: #666;
-$panel-font-color-alt: #666;
+$panel-font-color: white;
+$panel-font-color-alt: #737373;
 
 //
 // Pricing Table Variables
