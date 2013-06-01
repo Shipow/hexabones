@@ -25,4 +25,4 @@ Sa principale particularité est de passer par le webservice de la boutique pour
  - Hexabones s'appuie sur le framework Bootstrap de Twitter pour le responsive design, les excellentes bases et la large communauté qu'il propose.
  - La structure est adaptée à la webanalyse et offre une granularité soignée pour interpreter les comportements des utilisateurs via les données de Google Analytics.
  - Un grand soin est apporté à la sémantique du markup et les préconisation SEO sont prises très au serieux ici :)
- - Fait avec passion par et pour la communauté. Tout profil ou webdev ou e-commerce peut participer au projet pour l'améliorer avec ses connaisances.
+ - Fait avec passion par et pour la communauté. Tout profil 'webdev' orienté 'e-commerce' peut participer au projet pour l'améliorer avec ses connaisances.
