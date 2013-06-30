@@ -1,4 +1,5 @@
 'use strict';
+
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
@@ -131,14 +132,14 @@ module.exports = function (grunt) {
     },
     haml: {
       options: {
-          language: "ruby"
+        language: 'ruby'
       },
       dist: {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/views',
           src: '{,*/}*.haml',
-          dest: '.tmp/views',
+          dest: '<%= yeoman.dist %>/views',
           ext: '.html'
         }]
       }
@@ -153,7 +154,11 @@ module.exports = function (grunt) {
         importPath: '<%= yeoman.app %>/components',
         relativeAssets: true
       },
-      dist: {},
+      dist: {
+        options: {
+          cssDir: '<%= yeoman.app %>/styles'
+        }
+      },
       server: {
         options: {
           debugInfo: true
@@ -305,7 +310,8 @@ module.exports = function (grunt) {
     'clean:dist',
     'jshint',
     'test',
-    'coffee',
+    'haml:dist',
+    'coffee:dist',
     'compass:dist',
     'useminPrepare',
     'imagemin',

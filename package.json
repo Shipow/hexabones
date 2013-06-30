@@ -1,6 +1,6 @@
 {
-  "name": "yeoman-angular-haml",
-  "version": "0.0.0",
+  "name": "hexabones",
+  "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
