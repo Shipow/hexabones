@@ -1,0 +1,16 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+/* line 3, main.sass */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 7, main.sass */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 960px;
+}
+/* line 10, main.sass */
+.container-narrow > hr {
+  margin: 30px 0;
+}

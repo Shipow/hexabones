@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     watch: {
       haml: {
         files: ['<%= yeoman.app %>/views/{,*/}*.haml'],
-        tasks: ['haml:dist']
+        tasks: ['haml']
       },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -134,6 +134,15 @@ module.exports = function (grunt) {
       options: {
         language: 'ruby'
       },
+      server: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/views',
+          src: '{,*/}*.haml',
+          dest: '.tmp/views',
+          ext: '.html'
+        }]
+      },
       dist: {
         files: [{
           expand: true,
@@ -152,11 +161,14 @@ module.exports = function (grunt) {
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
+        relativeAssets: true,
+        debugInfo: false
       },
       dist: {
         options: {
-          cssDir: '<%= yeoman.app %>/styles'
+          noLineComments: 'true',
+          cssDir: '.tmp/styles',
+          environment: 'production'
         }
       },
       server: {
@@ -200,11 +212,12 @@ module.exports = function (grunt) {
     },
     cssmin: {
       dist: {
-        files: {
-          '<%= yeoman.dist %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css',
-            '<%= yeoman.app %>/styles/{,*/}*.css'
-          ]
+        minify: {
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: ['*.css', '!*.min.css'],
+          dest: '<%= yeoman.dist %>/styles/',
+          ext: '.min.css'
         }
       }
     },
@@ -288,8 +301,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('server', [
     'clean:server',
-    'coffee:dist',
-    'haml:dist',
+    'haml:server',
     'compass:server',
     'livereload-start',
     'connect:livereload',
@@ -299,8 +311,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'coffee',
-    'haml',
+    'haml:server',
     'compass',
     'connect:test',
     'karma'
@@ -311,7 +322,6 @@ module.exports = function (grunt) {
     'jshint',
     'test',
     'haml:dist',
-    'coffee:dist',
     'compass:dist',
     'useminPrepare',
     'imagemin',

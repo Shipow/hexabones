@@ -1,0 +1,47 @@
+#shop.row{"ng-controller"=>"Shop"}
+  .col.col-lg-6
+    %h2 Hexabones for PrestaShop !
+    %p
+      There are {{productsLength}} products in the store:
+    %p
+      Witch Query : {{query}}
+      
+    %ul#products.media-list
+      %li.media.ng-cloak{"ng-repeat"=>"product in products "}
+
+        %a.pull-left{:href=>"#"}
+          %img.media-object.thumbnail{:"ng-src"=>"{{shopURL}}/img/p/{{product.id_default_image | imagePath}}-home_default.jpg"}
+        .media-body
+          %h4.media-heading
+            {{product.name.language}}
+            %span.label.label-info {{product.condition}}
+          %p {{product.description.language.p}}
+          
+          .clearfix
+            %a.btn.tiny.btn-default See Details
+            %a.btn.tiny.btn-primary Add to cart
+        %hr
+
+
+    %h3 Shop Name : {{prestashop.api.attributes.shop_name}}
+    %p
+      Services list :
+    %ul#services
+      %li{"ng-repeat"=>"(service,service_data) in prestashop.api | with:'description'"}
+        %strong {{service}} : 
+        {{service_data.description}}
+    
+    %br/
+    %p You now have :
+    %ul
+      %li{"ng-repeat"=>"thing in awesomeThings"}
+        {{thing}}
+
+  .col.col-lg-4
+    %h3 Filters
+    %form
+      %label What are you looking for ?
+      .input-group
+        %input.col-lg-2{:type=>"text",:"ng-model"=>"query"}
+        %span.input-group-btn
+          %button.btn.btn-default Search

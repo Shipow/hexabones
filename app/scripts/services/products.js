@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('hexabonesApp')
-.factory('ProductsFactory', function($resource) {
-  var ws_source = 'http://cloud.capasite.fr/api/products/:productId';
-  var ws_key = 'M7Z2NP25E7RO0JSJBZRU9OG4AKDZZTW3';
-  var product = $resource(ws_source, { ws_key:ws_key},{
+.factory('ProductsFactory', function($http, $resource) {
+  var WS_SOURCE = 'http://cloud.capasite.fr/api/products/:productId';
+  var WS_KEY = 'M7Z2NP25E7RO0JSJBZRU9OG4AKDZZTW3';
+  var product = $resource(WS_SOURCE, { ws_key:WS_KEY,display:'full'},{
     getAll: {method:'GET', isArray:true},
     query: {method:'GET', params:{ productId:'@id'}}
   });
