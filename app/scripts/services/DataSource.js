@@ -10,7 +10,7 @@ angular.module('hexabonesApp')
         params: {ws_key:WS_KEY}
       }).
       success(function(data, status) {
-        console.log('Request succeeded');
+        //console.log('Request succeeded');
         callback(data);
       }).
       error(function(data, status) {

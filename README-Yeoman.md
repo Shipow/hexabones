@@ -26,7 +26,7 @@ And same for nodejs
 
 Install yeoman:
 
-    npm install -g yo grunt-cli bower
+   sudo npm install -g yo grunt-cli bower
     
 Install haml gem:
 
@@ -50,7 +50,3 @@ Launch the server:
 
 
 Edit app/view/main.html.haml and watch the LiveReload goodness!
-
-
-
-
