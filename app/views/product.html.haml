@@ -1,0 +1,16 @@
+#shop.row
+
+  .col.col-lg-2
+    %img.media-object.thumbnail{:"ng-src"=>"{{product.product.associations.images.image.id | imagePath}}"}
+  .col.col-lg-6
+    %h1 {{productId}}
+    %h2 {{product.product.name.language}}
+    %p {{product.product.description.language.p}}
+
+.row
+  %ul
+    %li{"ng-repeat"=>"(attribute,attribute_data) in product.product"}
+      {{attribute}} : {{attribute_data}}
+
+%siteHeader{:back=>'back'}
+    

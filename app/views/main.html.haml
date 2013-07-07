@@ -1,41 +1,56 @@
 #shop.row
-  .col.col-lg-6
-    %h2 Hexabones for PrestaShop !
-      
+  .col.col-lg-8
+    %h2 {{prestashop.api.attributes.shop_name}}
+    %hr
     %ul#products.media-list
-      %li.media.ng-cloak{"ng-repeat"=>"product in catalog.products.product | filter:query"}
-        %a.pull-left{:href=>"#"}
+      %li.media.ng-cloak{"ng-repeat"=>"product in catalog.products.product | filter:search"}
+        %a.pull-left{:href=>"#/products/{{product.id}}"}
           %img.media-object.thumbnail{:"ng-src"=>"{{product.associations.images.image.id | imagePath}}"}
         .media-body
           %h4.media-heading
-            {{product.name.language}}
+            %a{:href=>"#/products/{{product.id}}"}
+              {{product.name.language}}
             %span.label.label-info {{product.condition}}
+          %span.label{:"ng-repeat"=>"category in categories.categories.category | filter:{id:product.associations.categories.category.id}"}
+
+            {{category.name.language}}
           %p {{product.description.language.p}}
           
           .clearfix
-            %a.btn.tiny.btn-default See Details
+            %a.btn.tiny.btn-default{:href=>"#/products/{{product.id}}"} See Details
             %a.btn.tiny.btn-primary Add to cart
         %hr
 
-    %h3 Shop Name : {{prestashop.api.shop_name}}
-    %p
-      Services list :
+  .col.col-lg-4
+
+    %h3 Cart
+    .well
+      %a.btn.btn-primary Checkout
+
+    %h3 Search
+    %form
+      %label What are you looking for ?
+      %input.col-lg-12{:type=>"text",:"ng-model"=>"search.name"}
+
+    %h3 Categories
+    %ul.nav.nav-stacked
+      %li{:'ng-repeat'=>'category in categories.categories.category | filter:{id_parent:2}'}
+        %a{:href=>'',:'ng-click'=>'filterCategory(category.id)'}
+          {{category.name.language}}
+
+    %h3 Login
+    .well
+      %a.btn.btn-default Sign up
+      %a.btn.btn-default Sign in
+
+    %h3 Services Available
     %ul#services
       %li{"ng-repeat"=>"(service,service_data) in prestashop.api | with:'description'"}
         %strong {{service}} : 
         {{service_data.description}}
-    
+        
     %br/
-    %p You now have :
+    %p We love :
     %ul
       %li{"ng-repeat"=>"thing in awesomeThings"}
         {{thing}}
-
-  .col.col-lg-4
-    %h3 Filters
-    %form
-      %label What are you looking for ?
-      .input-group
-        %input.col-lg-2{:type=>"text",:"ng-model"=>"query.name"}
-        %span.input-group-btn
-          %button.btn.btn-default Search
