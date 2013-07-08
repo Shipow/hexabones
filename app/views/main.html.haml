@@ -38,8 +38,8 @@
       %input.col-lg-12{:type=>"text",:"ng-model"=>"search.name"}
 
     %h3 <i class="icon-tags"></i> Categories
-    %ul.nav.nav-stacked
-      %li{:'ng-repeat'=>'category in categories.categories.category | filter:{id_parent:2}'}
+    %ul.nav.nav-pills.nav-stacked
+      %li{:"ng-repeat"=>"category in categories.categories.category | filter:{id_parent:2}",:"ng-class"=>"{active : isSelected(category.id)}"}
         %a{:href=>'',:'ng-click'=>'filterCategory(category.id)'}
           {{category.name.language}}
 

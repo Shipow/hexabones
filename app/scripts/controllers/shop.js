@@ -33,6 +33,7 @@ angular.module('hexabonesApp')
             } else {
                 $scope.search={'associations.categories.category':categoryId};
                 $scope.query = $scope.catNameById(categoryId);
+                $scope.selected = categoryId;
             }
 
         }
@@ -45,6 +46,10 @@ angular.module('hexabonesApp')
                 }
             },catName);
             return catName;
+        }
+
+        $scope.isSelected = function(id) {
+            return $scope.selected === id;
         }
     }
 ]);
