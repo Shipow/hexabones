@@ -11,9 +11,10 @@
             %a{:href=>"#/products/{{product.id}}"}
               {{product.name.language}}
             %span.label.label-info {{product.condition}}
-          %span.label{:"ng-repeat"=>"category in categories.categories.category | filter:{id:product.associations.categories.category.id}"}
 
-            {{category.name.language}}
+          %span.badge{:"ng-repeat"=>"badge in categories.categories.category | filter:{id:product.associations.categories.category.id }"}
+            {{badge.name.language}}
+
           %p {{product.description.language.p}}
           
           .clearfix
