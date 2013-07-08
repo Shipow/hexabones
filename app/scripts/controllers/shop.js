@@ -27,8 +27,24 @@ angular.module('hexabonesApp')
         $scope.search = {};
 
         $scope.filterCategory = function(categoryId){
-            //alert('test');
-            $scope.search={'associations.categories.category.id':categoryId};
+            if(categoryId===false){
+                $scope.query = null;
+                $scope.search= null;
+            } else {
+                $scope.search={'associations.categories.category':categoryId};
+                $scope.query = $scope.catNameById(categoryId);
+            }
+
+        }
+
+        $scope.catNameById = function(id){
+            var catName = '';
+            angular.forEach($scope.categories.categories.category, function(value, key){
+                if(value.id===id){
+                    catName =(value.name.language);
+                }
+            },catName);
+            return catName;
         }
     }
 ]);

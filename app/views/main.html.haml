@@ -2,6 +2,10 @@
   .col.col-lg-8
     %h2 {{prestashop.api.attributes.shop_name}}
     %hr
+    %ul.breadcrumb{:"ng-show"=>"query"}
+      %li 
+        %a{:href=>'',:'ng-click'=>'filterCategory(false)'} Home
+      %li.active {{query}}
     %ul#products.media-list
       %li.media.ng-cloak{"ng-repeat"=>"product in catalog.products.product | filter:search"}
         %a.pull-left{:href=>"#/products/{{product.id}}"}
@@ -12,8 +16,8 @@
               {{product.name.language}}
             %span.label.label-info {{product.condition}}
 
-          %span.badge{:"ng-repeat"=>"badge in categories.categories.category | filter:{id:product.associations.categories.category.id }"}
-            {{badge.name.language}}
+          %span.badge{:"ng-repeat"=>"catId in product.associations.categories.category|getChild"}
+            {{catNameById(catId)}}
 
           %p {{product.description.language.p}}
           
@@ -24,34 +28,33 @@
 
   .col.col-lg-4
 
-    %h3 Cart
+    %h3 <i class="icon-shopping-cart"></i> Cart
     .well
       %a.btn.btn-primary Checkout
 
-    %h3 Search
+    %h3 <i class="icon-search"></i> Search
     %form
       %label What are you looking for ?
       %input.col-lg-12{:type=>"text",:"ng-model"=>"search.name"}
 
-    %h3 Categories
+    %h3 <i class="icon-tags"></i> Categories
     %ul.nav.nav-stacked
       %li{:'ng-repeat'=>'category in categories.categories.category | filter:{id_parent:2}'}
         %a{:href=>'',:'ng-click'=>'filterCategory(category.id)'}
           {{category.name.language}}
 
-    %h3 Login
+    %h3 <i class="icon-unlock-alt"></i> Login
     .well
       %a.btn.btn-default Sign up
       %a.btn.btn-default Sign in
 
-    %h3 Services Available
+    %h3 <i class="icon-cogs"></i> Services Available
     %ul#services
       %li{"ng-repeat"=>"(service,service_data) in prestashop.api | with:'description'"}
         %strong {{service}} : 
         {{service_data.description}}
         
-    %br/
-    %p We love :
+    %h3 <i class="icon-code"></i> We love :
     %ul
       %li{"ng-repeat"=>"thing in awesomeThings"}
         {{thing}}

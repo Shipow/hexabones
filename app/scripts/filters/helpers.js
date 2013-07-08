@@ -44,16 +44,18 @@ angular.module('hexabonesApp')
 });
 
 angular.module('hexabonesApp')
-.filter('explose', function() {
-  console.log('test');
-  return function(array){
-    var data = {};
-    for (var key in array) {
-      if (array.hasOwnProperty(key)) {
-         var data = (array[key]);
-         return data;
+.filter('getChild', function() {
+  return function(start){
+      var log = [];
+      angular.forEach(start, function(value, key){
+        if( Object.prototype.toString.call(value) === '[object Object]' ) {
+        angular.forEach(value, function(value, key){
+          log.push(value);
+        })
+      }else {
+        log.push(value);
       }
-    }   
-    
+    } );
+    return log;
   }
 });
