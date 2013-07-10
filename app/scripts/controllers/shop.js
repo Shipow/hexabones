@@ -1,10 +1,13 @@
 'use strict';
 
 angular.module('hexabonesApp')
-.controller('Shop', ['$scope','DataSource','ProductsFactory',
-    function($scope, DataSource, ProductsFactory) {
+.controller('Shop', ['$scope','DataSource','ProductsFactory','$routeParams', '$location','$route',
+    function($scope, DataSource, ProductsFactory, $routeParams, $location, $route) {
 
-
+        if($routeParams.catId){
+            console.log($routeParams.catId);
+        }
+        
 
         var shopData = function(data) {$scope.prestashop = data;};
         DataSource.get(WS_SOURCE,WS_KEY,shopData);
@@ -34,6 +37,11 @@ angular.module('hexabonesApp')
                 $scope.search={'associations.categories.category':categoryId};
                 $scope.query = $scope.catNameById(categoryId);
                 $scope.selected = categoryId;
+                $location.path('/'+categoryId);
+                var lastRoute = $route.current;
+                $scope.$on('$locationChangeSuccess', function(event) {
+                    $route.current = lastRoute;
+                });
             }
 
         }

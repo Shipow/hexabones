@@ -16,8 +16,8 @@
               {{product.name.language}}
             %span.label.label-info {{product.condition}}
 
-          %span.badge{:"ng-repeat"=>"catId in product.associations.categories.category|getChild"}
-            {{catNameById(catId)}}
+          %span{:"ng-repeat"=>"catId in product.associations.categories.category|getChild"}
+            %a.badge{:href=>'',:'ng-click'=>'filterCategory(catId)'}{{catNameById(catId)}}
 
           %p {{product.description.language.p}}
           
