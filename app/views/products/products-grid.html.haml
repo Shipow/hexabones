@@ -1,0 +1,19 @@
+.row
+  .col.col-lg-3.ng-cloak{"ng-repeat"=>"product in catalog.products.product | filter:search"}
+    %a.pull-left{:href=>"#/products/{{product.id}}"}
+      %img.media-object.thumbnail{:"ng-src"=>"{{product.associations.images.image.id | imagePath}}"}
+    .media-body
+      %h4.media-heading
+        %a{:href=>"#/products/{{product.id}}"}
+          {{product.name.language}}
+        %span.label.label-info {{product.condition}}
+
+      %span{:"ng-repeat"=>"catId in product.associations.categories.category|getChild"}
+        %a.badge{:href=>'',:'ng-click'=>'filterCategory(catId)'}{{catNameById(catId)}}
+
+      %p {{product.description.language.p}}
+      
+      .clearfix
+        %a.btn.tiny.btn-default{:href=>"#/products/{{product.id}}"} See Details
+        %a.btn.tiny.btn-primary Add to cart
+    %hr

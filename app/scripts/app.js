@@ -9,11 +9,11 @@ angular.module('hexabonesApp', ['ngResource']).config(function($routeProvider) {
   return $routeProvider
   .when('/:catId', {
     templateUrl: 'views/main.html',
-    controller: 'Shop',
+    controller: 'Shop'
   })
   .when('/products/:productId', {
     templateUrl: 'views/product.html',
-    controller: 'Product',
+    controller: 'Product'
   })
   .otherwise({
     redirectTo: '/'

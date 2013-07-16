@@ -1,11 +1,27 @@
 /* Will be compiled down to a single stylesheet with your sass files */
+@import bootstrap
 
 body
-  padding-top: 20px
   padding-bottom: 20px
+  padding-top: 70px
 
 .container-narrow
   margin: 0 auto
   max-width: 960px
   > hr
     margin: 30px 0
+
+#products-result
+  padding: 0 15px
+
+.product
+  @extend .col
+  @extend .col-lg-3
+  @extend .thumbnail
+  min-height: 30em
+  padding: 0
+  margin-bottom: 2px
+
+p.product-description
+  font-size: 0.85em
+  padding-top: 1em

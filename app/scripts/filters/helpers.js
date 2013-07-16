@@ -26,7 +26,6 @@ angular.module('hexabonesApp')
   };
 });
 
-
 angular.module('hexabonesApp')
 .filter('imagePath', function() {
   return function(imageId) {
@@ -37,7 +36,7 @@ angular.module('hexabonesApp')
       for (var i in result){
         path += result[i]+'/';
       }
-      var imageURL = shopURL+'/img/p/'+path+imageId+'-home_default.jpg';
+      var imageURL = shopURL+'/img/p/'+path+imageId+'-large_default.jpg';
       return imageURL;
     }
   };
@@ -58,4 +57,20 @@ angular.module('hexabonesApp')
     } );
     return log;
   }
+});
+
+angular.module('hexabonesApp')
+.filter('truncate', function () {
+    return function (text, length, end) {
+        if (isNaN(length))
+            length = 10;
+        if (end === undefined)
+            end = "...";
+        if (text.length <= length || text.length - end.length <= length) {
+            return text;
+        }
+        else {
+            return String(text).substring(0, length-end.length) + end;
+        }
+    }
 });
