@@ -3249,7 +3249,7 @@ a.list-group-item.active .list-group-item-text {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kevingranger\/github\/hexabones\/app\/components\/sass-twitter-bootstrap\/lib\/_panels\.scss}line{font-family:\000037}}
-.panel {
+.panel, .product-loading {
   padding: 15px;
   margin-bottom: 20px;
   background-color: white;
@@ -5634,4 +5634,19 @@ body {
 p.product-description {
   font-size: 0.85em;
   padding-top: 1em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kevingranger\/github\/hexabones\/app\/styles\/main\.sass}line{font-family:\0000329}}
+.navbar-brand {
+  max-width: 400px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kevingranger\/github\/hexabones\/app\/styles\/main\.sass}line{font-family:\0000332}}
+.product-loading {
+  margin: 60px auto 0;
+  width: 200px;
+  color: #aaaaaa;
+  background-color: #eeeeee;
+  text-align: center;
+  font-size: 1.2em;
 }

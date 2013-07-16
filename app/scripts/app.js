@@ -19,3 +19,7 @@ angular.module('hexabonesApp', ['ngResource']).config(function($routeProvider) {
     redirectTo: '/'
   });
 });
+
+
+// create a data service that provides a store and a shopping cart that
+// will be shared by all views (instead of creating fresh ones for each view).

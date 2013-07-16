@@ -1,6 +1,6 @@
 %header
   .navbar.navbar-inverse.navbar-fixed-top
-    %a.navbar-brand{:href=>"/"} PrestaShop&trade;
+    %a.navbar-brand{:href=>"/"} PrestaShop + Angular.js = Hexabones
     %ul.nav.navbar-nav
       %li
         %a{:href=>"/"}
@@ -22,6 +22,7 @@
           %li.disabled
             %a{:href=>"#"} es
     %button.btn.btn-primary.navbar-btn.pull-right
+      %i.icon-unlock-alt
       sign-in
 #shop.row
   //main
@@ -34,13 +35,18 @@
     //breadcrumb
     %ul.breadcrumb{:"ng-show"=>"query"}
       %li 
-        %a{:href=>'',:'ng-click'=>'filterCategory(false)'} Home
+        %a{:href=>'',:'ng-click'=>'filterCategory(false)'}
+          %i.icon-home
+          Home
       %li.active {{query}}
 
     //products
     %section#products
-      #products-sorting-options.well
-        %ul.nav.nav-pills
+      #products-sorting-options.navbar{"ng-show"=>"catalog.products.product"}
+        
+        %form.navbar-form.pull-left
+          %input{:type=>"text",:"ng-model"=>"search.name",:"placeholder"=>"What are you looking for ?", :"style"=>"width: 300px;"}
+        %ul.nav.navbar-nav.pull-right
           %li
             %a{:href=>"#"}
               %i.icon-align-justify
@@ -51,7 +57,10 @@
               Grid
 
       #products-result.row
-        .product.ng-cloak{"ng-repeat"=>"product in catalog.products.product | filter:search"}
+        .product-loading{"ng-hide"=>"catalog.products.product.length>0"}
+          %i.icon-refresh.icon-spin.icon-large
+          Loading...
+        .product.ng-cloak{"ng-show"=>"catalog.products.product.length>0","ng-repeat"=>"product in catalog.products.product | filter:search"}
           %a{:href=>"#/products/{{product.id}}"}
             %img.media-object{:"ng-src"=>"{{product.associations.images.image.id | imagePath}}"}
           .caption
@@ -59,54 +68,54 @@
               %a{:href=>"#/products/{{product.id}}"}
                 {{product.name.language}}
             %span{:"ng-repeat"=>"catId in product.associations.categories.category|getChild"}
-              %a.badge{:href=>'',:'ng-click'=>'filterCategory(catId)'}{{catNameById(catId)}}
+              %a.label{:href=>'',:'ng-click'=>'filterCategory(catId)'}{{catNameById(catId)}}
 
             %p.product-description {{product.description.language.p|truncate:120}}
             
             %p
-              %a.btn.tiny.btn-primary{:title=>"Add to cart",:"ng-click"=>"addItem(product,1)"}
+              %a.btn.tiny.btn-primary{:title=>"Add to cart",:"ng-click"=>"cart.addItem(product.id,product.name.language,1)"}
                 %i.icon-shopping-cart
                 +1
               %a.btn.tiny.btn-default.pull-right{:href=>"#/products/{{product.id}}",:title=>"See Details"} 
                 %i.icon-search
   //sidebar
   %aside#sidebar.col.col-lg-3
-    #cart.panel.panel-success{:"ng-show"=>"cart.length>0"}
+    %section#cart.panel.panel-success
       .panel-heading
         %i.icon-shopping-cart
         Cart
       %ul.list-group
-        %li.list-group-item{:"ng-repeat"=>"item in cart"}
+        %li.list-group-item{:"ng-repeat"=>"item in cart.items"}
           %span.badge {{item.quantity}}
-          {{item.name.language}}
-      %a.btn.btn-success Checkout
-
-    %h3
-      %i.icon-search
-      Search
-    %form
-      %label What are you looking for ?
-      %input.col-lg-12{:type=>"text",:"ng-model"=>"search.name"}
-
-    %h3 <i class="icon-tags"></i> Categories
-    %ul#categories.nav.nav-pills.nav-stacked
-      %li{:"ng-repeat"=>"category in categories.categories.category | filter:{id_parent:2}",:"ng-class"=>"{active : isSelected(category.id)}"}
-        %a{:href=>'',:'ng-click'=>'filterCategory(category.id)'}
+          {{item.name}}
+      %a.btn.btn-success
+        %i.icon-ok
+        Checkout
+      %a.btn.btn-default{:"ng-click"=>"cart.clearItems()"} Clear
+    //category
+    %section#categories.panel
+      .panel-heading
+        %i.icon-tags
+        Categories
+      %p Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur.
+      %div.list-group.list-group-flush
+        %a.list-group-item{:"ng-repeat"=>"category in categories.categories.category | filter:{id_parent:2}",:"ng-class"=>"{active : isSelected(category.id)}", :href=>'#',:'ng-click'=>'filterCategory(category.id)'}
+          %span.badge {{category.nb_products_recursive}}
           {{category.name.language}}
-
-    %h3 <i class="icon-unlock-alt"></i> Login
-    .well
-      %a.btn.btn-default Sign up
-      %a.btn.btn-default Sign in
-
-    .panel.info
-      %h3 <i class="icon-cogs"></i> Services Available
+    //services
+    %section.panel
+      .panel-heading
+        %i.icon-cogs
+        Services Available
       %ul#services
         %li{"ng-repeat"=>"(service,service_data) in prestashop.api | with:'description'"}
           %strong {{service}} : 
           {{service_data.description}}
-          
-      %h3 <i class="icon-code"></i> We love :
+    //infos
+    %section.panel
+      .panel-heading
+        %i.icon-code
+        We love 
       %ul
         %li{"ng-repeat"=>"thing in awesomeThings"}
           {{thing}}
