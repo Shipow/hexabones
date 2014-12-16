@@ -166,7 +166,6 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          noLineComments: 'true',
           cssDir: '.tmp/styles',
           environment: 'production'
         }
